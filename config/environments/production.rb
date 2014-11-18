@@ -79,4 +79,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  # Add trainer.css to precompile array since it is excluded in application.css
+  # to give Trainer persona a different look-n-feel
+  config.assets.precompile += %w(trainer.css)
+  
 end

@@ -11,7 +11,6 @@
  * file per style scope.
  *
  *= require_self
- *= require home
  */
 
 @import "bootstrap-sprockets";
@@ -36,4 +35,16 @@ div.flash-alert {
   background-color: #f2dede;
   border-color: #ebccd1;
   color: #a94442;
+}
+
+div.navbar {
+  background-color: #bbffff;
+/*  border-color: #ebccd1;
+  color: #a94442;*/
+}
+
+div.navbar-collapse {
+  background-color: #e0ffff;
+/*  border-color: #e0ffff;
+  color: #a94442;*/
 }

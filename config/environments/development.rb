@@ -36,4 +36,8 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
+  # Add trainer.css to precompile array since it is excluded in application.css
+  # to give Trainer persona a different look-n-feel
+  config.assets.precompile += %w(trainer.css)
 end
