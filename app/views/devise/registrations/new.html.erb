@@ -13,7 +13,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
   <div><%= f.label :user_type %>
-       <%= f.select :type, User.types, :prompt => "Select One:" %></div>
+       <%= f.select :type, User.types.select { |a| a != 'Admin' }, :prompt => "Select One:" %></div>
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
