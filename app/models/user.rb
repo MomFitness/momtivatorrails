@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  def self.types
-    ["Mom", "Trainer"]
+  def self.roles
+    ["Admin", "Mom", "Trainer"]
   end
 end
