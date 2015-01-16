@@ -13,6 +13,68 @@
 
 ActiveRecord::Schema.define(version: 20141111043608) do
 
+  create_table "equipments", force: true do |t|
+    t.string "desc", limit: 256
+  end
+
+  create_table "exercises", force: true do |t|
+    t.integer "user_id",             null: false
+    t.integer "type_id",             null: false
+    t.string  "desc",            limit: 256
+    t.string  "suitable_for",    limit: 256
+    t.integer "goal_id"
+    t.string  "goal",            limit: 256
+  end
+
+  create_table "feedbacks", force: true do |t|
+    t.integer "workout_id",             null: false
+    t.integer "mom_id",                 null: false
+    t.string  "feedbacks",  limit: 256
+  end
+  
+  create_table "goals", force: true do |t|
+    t.string  "desc",        limit: 256, null: false
+    t.integer "goal_type",               null: false
+  end
+
+  create_table "mistakes", force: true do |t|
+    t.integer "exercise_id",             null: false
+    t.string  "desc",        limit: 256, null: false
+    t.string  "advise",      limit: 256
+  end
+  
+  create_table "profiles", force: true do |t|
+    t.integer "user_id",                        null: false
+    t.string  "first_name",         limit: 256, null: false
+    t.string  "last_name",          limit: 256, null: false
+    t.string  "address",            limit: 256
+    t.string  "years_of_exprience", limit: 256
+  end
+
+  create_table "required_tools", force: true do |t|
+    t.integer "exercise_id",  null: false
+    t.integer "equipment_id", null: false
+  end
+  
+  create_table "restrictions", force: true do |t|
+    t.integer "min_reps"
+    t.integer "max_reps"
+    t.integer "min_time",       null: false
+    t.integer "max_time",       null: false
+  end
+
+  create_table "sequences", force: true do |t|
+    t.integer "exercise_id", null: false
+    t.integer "workout_id",  null: false
+    t.integer "order",       null: false
+    t.integer "repeats",     null: false
+    t.integer "duration",    null: false
+  end
+
+  create_table "types", force: true do |t|
+    t.string "desc", limit: 256
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -31,5 +93,18 @@ ActiveRecord::Schema.define(version: 20141111043608) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "workouts", force: true do |t|
+    t.string   "name",        limit: 256, null: false
+    t.integer  "mom_id",                  null: false
+    t.integer  "trainer_id",              null: false
+    t.integer  "timer",                   null: false
+    t.string   "status",      limit: 256
+    t.datetime "start"
+    t.datetime "end"
+    t.string   "focus",       limit: 256
+    t.integer  "feedback_id",             null: false
+    t.integer  "goal_id"
+  end
 
 end
