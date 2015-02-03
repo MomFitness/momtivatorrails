@@ -66,13 +66,13 @@ columns = ['id', 'user_id', 'type_id', 'name', 'goal_id', 'focus']
 end
 
 print("\nCreating default Goals: ")
-columns = ['id', 'desc', 'goal_type']
+columns = ['id', 'desc', 'goal_type_id']
 [ 
-  [1,'Raise heart rate','EXERCISE'],
-  [2,'Break sweat','EXERCISE'],
-  [3,'Muscle Strength','EXERCISE'],
-  [4,'Core Strength','EXERCISE'],
-  [5,'Sore','POST-WORKOUT']
+  [1,'Raise heart rate',6],
+  [2,'Break sweat',6],
+  [3,'Muscle Strength',6],
+  [4,'Core Strength',6],
+  [5,'Sore',7]
 ].each do | row |
   unless Goal.find_by_id(row.first)
     print "c"
@@ -112,6 +112,27 @@ columns = ['id', 'exercise_id', 'level_type', 'desc']
   unless Modification.find_by_id(row.first)
     print "c"
     unless (x = Modification.new(row_to_hash(columns, row))).save
+      puts("Error on row #{row.first}: #{x.errors.full_messages.join(", ")}")
+      puts x.inspect
+    end
+  else
+    print "."
+  end
+end
+
+print("\nCreating default RepeatSequence: ")
+columns = ['id', 'start_sequence_id', 'end_sequence_id', 'reps']
+[ 
+	[1,8,10,2],
+	[2,36,40,3],
+	[3,3,6,2],
+	[4,28,31,5],
+	[5,23,25,4],
+	[6,15,19,2]
+].each do | row |
+  unless RepeatSequence.find_by_id(row.first)
+    print "c"
+    unless (x = RepeatSequence.new(row_to_hash(columns, row))).save
       puts("Error on row #{row.first}: #{x.errors.full_messages.join(", ")}")
       puts x.inspect
     end
@@ -259,8 +280,8 @@ columns = ['id', 'name', 'mom_id', 'trainer_id', 'timer',
            'status', 'start', 'end', 'focus',
            'feedback_id', 'goal_id']
 [ 
-  [1,'Fitness Magazine Workout 1',4,3,0,nil,nil,nil,'Whole Body',0,nil],
-  [2,'Fitness Magazine Workout 2',4,3,0,nil,nil,nil,'Whole Body',0,nil]
+  [1,'Fitness Magazine Workout 1',1,1,0,nil,nil,nil,'Whole Body',0,nil],
+  [2,'Fitness Magazine Workout 2',1,1,0,nil,nil,nil,'Whole Body',0,nil]
 ].each do | row |
   unless Workout.find_by_id(row.first)
     print "c"

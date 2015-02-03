@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20141111043608) do
 
   create_table "goals", force: true do |t|
     t.string "desc",      limit: 256,              null: false
-    t.string "goal_type", limit: 256, default: "", null: false
+    t.integer "goal_type_id", null: false
   end
 
   create_table "mistakes", force: true do |t|
