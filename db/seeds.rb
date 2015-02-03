@@ -66,13 +66,13 @@ columns = ['id', 'user_id', 'type_id', 'name', 'goal_id', 'focus']
 end
 
 print("\nCreating default Goals: ")
-columns = ['id', 'desc', 'goal_type']
+columns = ['id', 'desc', 'goal_type_id']
 [ 
-  [1,'Raise heart rate','EXERCISE'],
-  [2,'Break sweat','EXERCISE'],
-  [3,'Muscle Strength','EXERCISE'],
-  [4,'Core Strength','EXERCISE'],
-  [5,'Sore','POST-WORKOUT']
+  [1,'Raise heart rate',6],
+  [2,'Break sweat',6],
+  [3,'Muscle Strength',6],
+  [4,'Core Strength',6],
+  [5,'Sore',7]
 ].each do | row |
   unless Goal.find_by_id(row.first)
     print "c"
