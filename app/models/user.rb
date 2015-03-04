@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 
   has_one :profile, :dependent => :destroy
   has_many :feedbacks
-  has_many :workouts
+  # has_many :workouts
+  has_many :mom_workouts, :class_name => "Workout", foreign_key: "mom_id"
+  has_many :trainer_workouts, :class_name => "Workout"
   has_many :exercise_instructions
   has_many :exercises
   

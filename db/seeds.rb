@@ -120,6 +120,22 @@ columns = ['id', 'exercise_id', 'level_type', 'desc']
   end
 end
 
+print("\nCreating default Profile: ")
+columns = ['id', 'user_id', 'first_name', 'last_name', 'address', 'years_of_exprience']
+[ 
+  [1,1,'John','Doe','123 Market St. San Francisco', 12]
+].each do | row |
+  unless Profile.find_by_id(row.first)
+    print "c"
+    unless (x = Profile.new(row_to_hash(columns, row))).save
+      puts("Error on row #{row.first}: #{x.errors.full_messages.join(", ")}")
+      puts x.inspect
+    end
+  else
+    print "."
+  end
+end
+
 print("\nCreating default RepeatSequence: ")
 columns = ['id', 'start_sequence_id', 'end_sequence_id', 'reps']
 [ 
@@ -280,8 +296,8 @@ columns = ['id', 'name', 'mom_id', 'trainer_id', 'timer',
            'status', 'start', 'end', 'focus',
            'feedback_id', 'goal_id']
 [ 
-  [1,'Fitness Magazine Workout 1',1,1,0,nil,nil,nil,'Whole Body',0,nil],
-  [2,'Fitness Magazine Workout 2',1,1,0,nil,nil,nil,'Whole Body',0,nil]
+  [1,'Fitness Magazine Workout 1',2,1,0,nil,nil,nil,'Whole Body',0,nil],
+  [2,'Fitness Magazine Workout 2',2,1,0,nil,nil,nil,'Whole Body',0,nil]
 ].each do | row |
   unless Workout.find_by_id(row.first)
     print "c"

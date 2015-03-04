@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => "Access denied." unless current_user.is_trainer?
   end
   
+  def required_mom
+    redirect_to root_url, :alert => "Access denied." unless current_user.is_mom?
+  end
+  
 end

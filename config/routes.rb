@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'trainer/home' => 'trainer#dashboard'
+  get 'mom/home' => 'mom#dashboard'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
