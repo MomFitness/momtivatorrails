@@ -2,5 +2,11 @@
 
 <div id="lst_workouts">
   <%= link_to "Today (#{Date.today})", mom_home_path(:filter => 'today') %> | <%= link_to "All", mom_home_path(:filter => 'all') %>
-  <%= render(:partial => "workouts") %>
+  <div id="workout_list">
+    <% unless @workouts.empty? %>
+      <%= render(:partial => "workouts") %>
+    <% else %>
+      No workout schedule today!
+    <% end %>
+  </div>
 </div>

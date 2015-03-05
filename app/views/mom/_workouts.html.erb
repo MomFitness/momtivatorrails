@@ -1,22 +1,20 @@
-<div id="workout_list">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Workout Name</th>
-        <th>Trainer Name</th>
-        <th>Date</th>
-        <th>Timer</th>
-        <th>Status</th>
-        <th>Start</th>
-        <th>End</th>
-        <th>Focus</th>
-        <th>Goal</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @workouts.each do | workout | %>
-        <%= render(:partial => "workout", :locals => {:workout => workout}) %>
-      <% end %>
-    </tboby>
-  </table>
-</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Workout Name</th>
+      <th>Trainer Name</th>
+      <th>Date</th>
+      <th>Timer</th>
+      <th>Status</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Focus</th>
+      <th>Goal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workouts.each do | workout | %>
+      <%= render(:partial => "workout", :locals => {:workout => workout}) %>
+    <% end %>
+  </tboby>
+</table>
