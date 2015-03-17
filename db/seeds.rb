@@ -294,10 +294,10 @@ end
 print("\nCreating default Workout: ")
 columns = ['id', 'name', 'mom_id', 'trainer_id', 'timer',
            'status', 'start', 'end', 'focus',
-           'feedback_id', 'goal_id', 'workout_date']
+           'feedback_id', 'goal_id', 'workout_date', 'workout_schedule_time']
 [ 
-  [1,'Fitness Magazine Workout 1',2,1,0,nil,nil,nil,'Whole Body',0,nil,1.month.ago],
-  [2,'Fitness Magazine Workout 2',2,1,0,nil,nil,nil,'Whole Body',0,nil,Date.today]
+  [1,'Fitness Magazine Workout 1',2,1,0,nil,nil,nil,'Whole Body',0,nil,1.month.ago,nil],
+  [2,'Fitness Magazine Workout 2',2,1,0,nil,nil,nil,'Whole Body',0,nil,Date.today,nil]
 ].each do | row |
   unless Workout.find_by_id(row.first)
     print "c"

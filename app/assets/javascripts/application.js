@@ -21,3 +21,30 @@ $(function() {
     $('.flash-notice').slideUp(450);
   }, 3000);
 });
+
+$(function() {
+  $('.clockpicker').clockpicker({
+    donetext: 'Done'
+  });
+});
+
+//  iPhone-style checkbox switches
+$(function() {
+  $("div.workout_schedule input[type=text]").blur(function(){
+    $("form.workout_schedule").submit();
+  });
+});
+
+// $(document).ready(function(){
+//     $("input").focus(function(){
+//         $(this).css("background-color", "#cccccc");
+//     });
+//     $("input").blur(function(){
+//         $(this).css("background-color", "#ffffff");
+//     });
+// });
+
+// $("input").blur(function(){
+//   alert("teser");
+//   $("form.workout_schedule").submit();
+// });

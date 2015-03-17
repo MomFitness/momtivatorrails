@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'trainer/home' => 'trainer#dashboard'
   get 'mom/home' => 'mom#dashboard'
+  put 'mom/update' => 'mom#update'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

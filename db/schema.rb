@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304081231) do
+ActiveRecord::Schema.define(version: 20150314062651) do
 
   create_table "equipments", force: true do |t|
     t.string "desc", limit: 256
@@ -118,17 +118,18 @@ ActiveRecord::Schema.define(version: 20150304081231) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "workouts", force: true do |t|
-    t.string   "name",         limit: 256, null: false
-    t.integer  "mom_id",                   null: false
-    t.integer  "trainer_id",               null: false
-    t.integer  "timer",                    null: false
-    t.string   "status",       limit: 256
+    t.string   "name",                  limit: 256, null: false
+    t.integer  "mom_id",                            null: false
+    t.integer  "trainer_id",                        null: false
+    t.integer  "timer",                             null: false
+    t.string   "status",                limit: 256
     t.datetime "start"
     t.datetime "end"
-    t.string   "focus",        limit: 256
-    t.integer  "feedback_id",              null: false
+    t.string   "focus",                 limit: 256
+    t.integer  "feedback_id",                       null: false
     t.integer  "goal_id"
-    t.date     "workout_date",             null: false
+    t.date     "workout_date",                      null: false
+    t.string   "workout_schedule_time", limit: 10
   end
 
 end
