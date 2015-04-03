@@ -1,11 +1,25 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   
   devise_for :users
 
   get 'trainer/home' => 'trainer#dashboard'
-  get 'mom/home' => 'mom#dashboard'
-  put 'mom/update' => 'mom#update'
   
+  scope "mom", as: "mom" do 
+    
+    get 'home' => 'mom#dashboard'
+    put 'update' => 'mom#update'
+    
+    resources :workout, only: [:show, :edit, :update]
+    
+  end
+  
+  # Route for pusher authentication
+  post 'pusher/authentication' => 'pusher#authentication'
+  
+  
+  mount Sidekiq::Web, at: '/sidekiq'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

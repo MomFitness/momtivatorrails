@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag params[:controller] %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "http://www.jqueryscript.net/css/jquerysctipttop.css" %>
+  <%= javascript_include_tag 'application', 'pusher', 'reminder', 'notify.min', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -22,3 +23,8 @@
   </div>
 </body>
 </html>
+
+<script type="text/javascript">
+  window.PUSHER_API_KEY = "<%= Pusher.key %>"
+  window.PRIVATE_CHANNEL = "<%= current_user ? 'private-'+current_user.id.to_s : '' %>"
+</script>

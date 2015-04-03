@@ -1,7 +1,7 @@
 <%= form_tag(mom_update_path, :method => "put", :remote => true, id: "update-form", :class => "form-inline workout_schedule") do %>
   <%= hidden_field_tag("workout_id", workout.id)%>
   <tr>
-    <td><%= workout.name %></td>
+    <td><%= link_to workout.name, mom_workout_path(workout.id) %></td>
     <td><%= workout.trainer.full_name %></td>
     <td><%= workout.workout_date %></td>
     <td>
