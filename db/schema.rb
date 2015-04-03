@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20150314062651) do
     t.integer  "goal_id"
     t.date     "workout_date",                      null: false
     t.string   "workout_schedule_time", limit: 10
+    t.integer  "job_id"
   end
 
 end
