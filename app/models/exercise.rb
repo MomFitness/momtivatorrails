@@ -6,7 +6,6 @@ class Exercise < ActiveRecord::Base
   
   has_and_belongs_to_many :mistakes
   belongs_to :goal
-  belongs_to :workout
   belongs_to :user
   
 end

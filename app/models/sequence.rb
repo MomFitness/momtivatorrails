@@ -1,4 +1,6 @@
 class Sequence < ActiveRecord::Base
   
-  has_many :workouts
+  belongs_to :workout
+  belongs_to :exercise
+  
 end
