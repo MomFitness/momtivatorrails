@@ -1,5 +1,5 @@
 class RepeatSequence < ActiveRecord::Base
   
-  belongs_to :workout
+  belongs_to :sequence
   
 end
