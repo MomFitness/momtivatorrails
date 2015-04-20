@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 20150314062651) do
     t.integer  "mom_id",                            null: false
     t.integer  "trainer_id",                        null: false
     t.integer  "timer",                             null: false
-    t.string   "status",                limit: 256
+    t.integer  "status",                default: 0, null: false
     t.datetime "start"
     t.datetime "end"
     t.string   "focus",                 limit: 256
