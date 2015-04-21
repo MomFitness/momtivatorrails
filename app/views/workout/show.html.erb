@@ -2,7 +2,7 @@
 
 <div id="workout">
   
-  <table class="table table-striped">
+  <table class="table">
     <thead>
       <tr>
         <th style="width: 10%">Trainer Name</th>
@@ -19,15 +19,15 @@
     </thead>
     <tbody>
       <%= form_tag(mom_workout_path, :method => "put", :remote => true, id: "update-seq-form", :class => "form-inline workout-seq-schedule") do %>
-        <input id="workout-timer" name="workout[timer]" type="hidden" value="<%= @workout.timer %>" class="workout-attr">
+        <input id="workout-timer" name="workout[timer]" type="hidden" value="<%= @workout.timer.blank? ? "00:00:00" : @workout.timer %>" class="workout-attr">
         <tr>
           <td><%= @workout.trainer.full_name %></td>
           <td><%= @workout.workout_date %></td>
           <td><%= @workout.workout_schedule_time %></td>
-          <td><div id="sequence_name"><%= @workout.timer.blank? ? @workout.sequences.first.exercise.name : @timer_seq.keys[0] %></div></td>
+          <td><div id="sequence_name"><%= @workout.timer.blank? ? "1.#{@workout.sequences.first.exercise.name}" : @timer_seq.keys[0] %></div></td>
           <td><div id="timer"><%= @workout.timer.blank? ? "00:00:00" : @timer_seq.keys[0] %></div></td>
-          <td><input id="workout-status" name="workout[status]" value="<%= @workout.status %>"></td>
-          <td><div id="workout-start"><%= local_time(@workout.start) %></div></td>
+          <td><input id="workout-status" name="workout[status]" value="<%= @workout.status %>" readonly='true'></td>
+          <td><div id="workout-start"><%= @workout.start.blank? ? nil : local_time(@workout.start) %></div></td>
           <td><%= @workout.end %></td>
           <td><%= @workout.focus %></td>
           <td><%= @workout.goal %></td>
@@ -38,17 +38,15 @@
 </div>
 <div class="timer_container">
   <label>Current Exercise</label>
-  <div id="sequence_number"><%= @workout.timer.blank? ? @workout.sequences.first.order : @seq_workout.order %>. </div>
-  <div id="sequence_name"><%= @workout.timer.blank? ? @workout.sequences.first.exercise.name : @timer_seq.keys[0] %></div>
-  <div id="sequence_duration"><%= Time.at(@workout.sequences.first.duration).utc.strftime("%H:%M:%S") %></div><br /><br />
+  <div id="curr_sequence_name"><%= @workout.timer.blank? ? "1.#{@workout.sequences.first.exercise.name}" : @timer_seq.keys[0] %></div>
+  <div id="curr_sequence_duration"><%= Time.at(@workout.sequences.first.duration).utc.strftime("%H:%M:%S") %></div><br /><br />
   
-  <label>Next Exercise</label>
-  <% if @seq_workout.order == @workout.sequences.last.order %>
-    <label> no more </label>
+  <label>Next Exercise</label><br />
+  <% if !@seq_workout.blank? && @seq_workout.order == @workout.sequences.last.order %>
+    <div> no more </div><br /><br />
   <% else %>
-    <div id="sequence_number"><%= @workout.timer.blank? ? @workout.sequences.first.order + 1 : @seq_workout.order + 1 %>. </div>
-    <div id="sequence_name"><%= @workout.timer.blank? ? @workout.sequences.first.exercise.name : @arry_timer_seq[1] %></div>
-    <div id="sequence_duration"><%= Time.at(@workout.sequences.first.duration).utc.strftime("%H:%M:%S") %></div><br /><br />
+    <div id="next_sequence_name"><%= @seq_keys[1] %></div>
+    <div id="next_sequence_duration"><%= Time.at(@sequences_duration[@seq_keys[1]]).utc.strftime("%H:%M:%S") %></div><br /><br />
   <% end %>
   
   <!-- <div id="timer">00:00:00</div><br /><br /> -->
@@ -57,6 +55,6 @@
 </div>
 
 <script type="text/javascript">
-  window.SEQUENCES_DURATION = '<%= raw @squences_duration.to_json %>'
+  window.SEQUENCES_DURATION = '<%= raw @sequences_duration.to_json %>'
   window.TIMER = '<%= raw @timer_seq.to_json %>'
 </script>

@@ -19,8 +19,10 @@ class Workout < ActiveRecord::Base
       end
     end
     
-    self.update_column(:start, Time.now) if self.status_was == "not started"
-    self.update_column(:end, Time.now) if self.status == "completed"
+    if self.status_changed?
+      self.update_column(:start, Time.now) if self.status_was == "not started"
+      self.update_column(:end, Time.now) if self.status == "completed"
+    end
   end
   
   before_destroy :remove_sidekiq_job

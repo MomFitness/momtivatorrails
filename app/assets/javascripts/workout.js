@@ -12,7 +12,6 @@ $(".workout.show").ready(function() {
   var start_time = 0;
   var current_seq_num = 0
   var next_seq_num = 0
-  
   if(timer){
     $("#timer").text(timer[workout_seq[0]]);
     start_time = parseInt(timer[workout_seq[0]].replace(/:/g, "")) * 1000;
@@ -31,7 +30,6 @@ $(".workout.show").ready(function() {
       next_seq_num = current_seq_num + 1
     }
     workout_elapsed = $('#timer').text();
-    console.log(next_seq_num);
     update_status('in progress', "{\\\"" + seq_name + "\\\":\\\"" + workout_elapsed + "\\\"}");
   });
   $("#btn_stop").click(function(){
@@ -45,21 +43,24 @@ $(".workout.show").ready(function() {
   
   $('#timer').stopwatch().bind('tick.stopwatch', function(e, elapsed){
     // duration * 1000 = actual seconds
-    if (elapsed >= seq_dur[keys[counts]] * 100) {
+    if (elapsed >= seq_dur[keys[counts]] * 1000) {
       if (counts + 1 >= seq_len) {
         $(this).stopwatch('stop');
         $(this).stopwatch('reset');
         $("#btn_star").hide();
         $("#btn_stop").hide();
+        $("#sequence_name").text();
         update_status('completed', null);
         $("form#update-seq-form").submit();
       }else {
         $(this).stopwatch('reset');
         counts += 1;
-        $("#sequence_number").text((counts + 1) + '. ');
         $("#sequence_name").text(keys[counts]);
         $("#sequence_duration").text(seq_dur[keys[counts]]);
-        console.log(seq_dur[keys[counts + 1]]);
+        $("#curr_sequence_name").text(keys[counts]);
+        $("#curr_sequence_duration").text(seq_dur[keys[counts]]);
+        $("#next_sequence_name").text(keys[counts + 1]);
+        $("#next_sequence_duration").text(seq_dur[keys[counts + 1]]);
         seq_name = $('#sequence_name').text();
         workout_elapsed = '00:00:00';
         update_status('in progress', "{\\\"" + seq_name + "\\\":\\\"" + workout_elapsed + "\\\"}");

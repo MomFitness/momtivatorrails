@@ -3,11 +3,14 @@ class WorkoutController < ApplicationController
   before_filter :get_workout, :only => [:show, :update]
   
   def show
-    @squences_duration = Hash.new()
+    @sequences_duration = Hash.new()
     @workout.expended_repeat_sequences.map do |s|
-      @squences_duration["#{s.new_order}.#{s.exercise.name}"] = s.duration
+      @sequences_duration["#{s.new_order}.#{s.exercise.name}"] = s.duration
     end
+    @seq_keys = @sequences_duration.keys
+    puts "@workout.timer ===> #{@workout.timer.inspect}"
     if @timer_seq = @workout.timer.blank? ? nil : JSON.parse(@workout.timer.gsub("\\", ""))
+      puts "Here?"
       @arry_timer_seq = timer_current_seq = @timer_seq.keys[0].split(".")
       puts "@arry_timer_seq before ===> #{@arry_timer_seq.inspect}"
       timer_current_seq.shift
