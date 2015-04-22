@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     get 'home' => 'mom#dashboard'
     put 'update' => 'mom#update'
     
-    resources :workout, only: [:show, :edit, :update]
+    resources :workout, only: [:show, :edit, :update] do
+      get 'preview'
+    end
     
   end
   

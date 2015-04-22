@@ -7,5 +7,8 @@ class Exercise < ActiveRecord::Base
   has_and_belongs_to_many :mistakes
   belongs_to :goal
   belongs_to :user
-  
+
+  def is_sequence_repeator?
+    name == "SEQUENCE REPEATOR"
+  end
 end

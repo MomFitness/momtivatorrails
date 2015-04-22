@@ -1,7 +1,10 @@
 <h1><%= @workout.name %></h1>
+<div id="preview">
+  <%= link_to "Show Preview", mom_workout_preview_path(@workout), :remote => true %>
+  <div id="preview_hide"/>
+</div>
 
 <div id="workout">
-  
   <table class="table table-striped">
     <thead>
       <tr>

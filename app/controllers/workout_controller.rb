@@ -5,8 +5,14 @@ class WorkoutController < ApplicationController
   def show
     
   end
-  
-  
+
+  def preview
+    @workout = Workout.find(params[:workout_id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
   
   def get_workout
@@ -16,5 +22,5 @@ class WorkoutController < ApplicationController
     redirect_to root_path
     return false
   end
-  
+
 end

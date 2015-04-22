@@ -1,8 +1,8 @@
 class Workout < ActiveRecord::Base
-  
   has_many :feedbacks
   has_many :sequences, -> { order(order: :asc) }
   has_many :repeat_sequences
+
   
   belongs_to :mom, foreign_key: "mom_id"
   belongs_to :trainer, foreign_key: "trainer_id"
@@ -35,5 +35,17 @@ class Workout < ActiveRecord::Base
     workout_date_time = self.workout_date.to_s + " " + self.workout_schedule_time
     # workout_date_time.to_i - Time.now.to_i - 2.hours
     workout_date_time.to_time - 5.minutes
+  end
+
+  def preview
+    @instructions = []
+    sequences.map do |seq| # Read sequence and exercise and breaks and provide data
+      if seq.exercise.is_sequence_repeator?
+        @instructions << "Repeat #{seq.repeat_sequence.reps} times from #{seq.repeat_sequence.start_seq.exercise.name} to #{seq.repeat_sequence.end_seq.exercise.name}"
+      else
+        @instructions << seq.exercise.name
+      end
+    end
+    @instructions
   end
 end
