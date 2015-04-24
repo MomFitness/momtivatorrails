@@ -69,14 +69,14 @@ $(".workout.show").ready(function() {
     });
 
     function update_status(status, time) {
-        $('#workout-status').val(status);
-        $('#workout-timer').val(time);
-        $("form#update-seq-form").submit();
+      $('#workout-status').val(status);
+      $('#workout-timer').val(time);
+      $("form#update-seq-form").submit();
     }
-
-    $(document).ready(function () {
-        $('#button').click(function () {
-            $('#preview').toggle();
-        });
-    });
-}
+  });
+  
+  $(document).ready(function () {
+      $('#button').click(function () {
+          $('#preview').toggle();
+      });
+  });
