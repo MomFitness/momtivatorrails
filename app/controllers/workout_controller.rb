@@ -25,13 +25,6 @@ class WorkoutController < ApplicationController
     redirect_to mom_workout_path(@workout)
   end
 
-  def preview
-    @workout = Workout.find(params[:workout_id])
-    respond_to do |format|
-      format.js
-    end
-  end
-
   private
   
   def get_workout

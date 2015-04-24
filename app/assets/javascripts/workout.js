@@ -76,7 +76,7 @@ $(".workout.show").ready(function() {
   });
   
   $(document).ready(function () {
-      $('#button').click(function () {
+      $('#preview_toggle').click(function () {
           $('#preview').toggle();
       });
   });
