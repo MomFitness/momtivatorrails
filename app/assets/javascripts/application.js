@@ -11,8 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.stopwatch
+//= require underscore
 //= require turbolinks
+//= require jquery.readyselector
 //= require bootstrap-sprockets
 //= require_tree .
 
@@ -20,16 +24,4 @@ $(function() {
   setTimeout(function(){
     $('.flash-notice').slideUp(450);
   }, 3000);
-});
-
-$(function() {
-  $('.clockpicker').clockpicker({
-    donetext: 'Done'
-  });
-});
-
-$(function() {
-  $("div.workout_schedule input[type=text]").change(function(){
-    $("form.workout_schedule").submit();
-  });
 });

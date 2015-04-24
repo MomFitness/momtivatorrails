@@ -1,18 +1,17 @@
-<%= form_tag(mom_update_path, :method => "put", :remote => true, id: "update-form", :class => "form-inline workout_schedule") do %>
+<%= form_tag(mom_update_path, :method => "put", :remote => true, id: "update-form", :class => "form-inline workout-schedule") do %>
   <%= hidden_field_tag("workout_id", workout.id)%>
   <tr>
     <td><%= link_to workout.name, mom_workout_path(workout.id) %></td>
     <td><%= workout.trainer.full_name %></td>
     <td><%= workout.workout_date %></td>
     <td>
-      <div class="input-group clockpicker workout_schedule">
-        <input id="workout_schedule" name="workout[workout_schedule_time]" type="text" class="form-control" value="<%= workout.workout_schedule_time %>">
+      <div class="input-group clockpicker workout-schedule">
+        <input id="workout-schedule" name="workout[workout_schedule_time]" type="text" class="form-control" value="<%= workout.workout_schedule_time %>">
         <span class="input-group-addon">
           <span class="glyphicon glyphicon-time"></span>
         </span>
       </div>
     </td>
-    <td><%= workout.timer %></td>
     <td><%= workout.status %></td>
     <td><%= workout.start %></td>
     <td><%= workout.end %></td>

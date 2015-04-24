@@ -118,17 +118,17 @@ ActiveRecord::Schema.define(version: 20150314062651) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "workouts", force: true do |t|
-    t.string   "name",                  limit: 256, null: false
-    t.integer  "mom_id",                            null: false
-    t.integer  "trainer_id",                        null: false
-    t.integer  "timer",                             null: false
-    t.string   "status",                limit: 256
-    t.datetime "start"
-    t.datetime "end"
+    t.string   "name",                  limit: 256,             null: false
+    t.integer  "mom_id",                                        null: false
+    t.integer  "trainer_id",                                    null: false
+    t.string   "timer",                 limit: 256
+    t.integer  "status",                            default: 0, null: false
+    t.datetime "start",                                         null: true
+    t.datetime "end",                                           null: true
     t.string   "focus",                 limit: 256
-    t.integer  "feedback_id",                       null: false
+    t.integer  "feedback_id",                                   null: true
     t.integer  "goal_id"
-    t.date     "workout_date",                      null: false
+    t.date     "workout_date",                                  null: true
     t.string   "workout_schedule_time", limit: 10
     t.integer  "job_id"
   end

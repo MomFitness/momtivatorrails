@@ -9,7 +9,7 @@
   <%= javascript_include_tag 'application', 'pusher', 'reminder', 'notify.min', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
   <% if notice %>
     <div id="flash-message" class="alert message flash-notice"><%= notice %></div>
   <% end %>

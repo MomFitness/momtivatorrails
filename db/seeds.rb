@@ -144,7 +144,8 @@ columns = ['id', 'start_sequence_id', 'end_sequence_id', 'reps']
 	[3,3,6,2],
 	[4,28,31,5],
 	[5,23,25,4],
-	[6,15,19,2]
+	[6,15,19,2],
+	[7,43,44,2]
 ].each do | row |
   unless RepeatSequence.find_by_id(row.first)
     print "c"
@@ -235,7 +236,11 @@ columns = ['id', 'exercise_id', 'workout_id', 'order', 'repeats', 'duration', 'r
   [38,16,2,17,20,0,nil],
   [39,16,2,17,20,0,nil],
   [40,17,2,18,0,30,nil],
-  [41,13,2,19,0,0,2]
+  [41,13,2,19,0,0,2],
+  [42,16,3,3,20,30,nil],
+  [43,8,3,1,20,20,nil],
+  [44,17,3,2,0,30,nil],
+  [45,13,3,4,0,0,7]
 ].each do | row |
   unless Sequence.find_by_id(row.first)
     print "c"
@@ -294,10 +299,11 @@ end
 print("\nCreating default Workout: ")
 columns = ['id', 'name', 'mom_id', 'trainer_id', 'timer',
            'status', 'start', 'end', 'focus',
-           'feedback_id', 'goal_id', 'workout_date', 'workout_schedule_time']
+           'feedback_id', 'goal_id', 'workout_date', 'workout_schedule_time', 'job_id']
 [ 
-  [1,'Fitness Magazine Workout 1',2,1,0,nil,nil,nil,'Whole Body',0,nil,1.month.ago,nil],
-  [2,'Fitness Magazine Workout 2',2,1,0,nil,nil,nil,'Whole Body',0,nil,Date.today,nil]
+  [1,'Fitness Magazine Workout 1',2,1,nil,0,nil,nil,'Whole Body',nil,nil,1.month.ago,nil,nil],
+  [2,'Fitness Magazine Workout 2',2,1,nil,0,nil,nil,'Whole Body',nil,nil,Date.today,nil,nil],
+  [3,'Fitness Magazine Workout 3',2,1,nil,0,nil,nil,'Whole Body',nil,nil,Date.today,nil,nil]
 ].each do | row |
   unless Workout.find_by_id(row.first)
     print "c"
