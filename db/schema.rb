@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314062651) do
+ActiveRecord::Schema.define(version: 20150508132901) do
 
   create_table "equipments", force: true do |t|
     t.string "desc", limit: 256
@@ -36,9 +36,12 @@ ActiveRecord::Schema.define(version: 20150314062651) do
   end
 
   create_table "feedbacks", force: true do |t|
-    t.integer "workout_id",             null: false
-    t.integer "mom_id",                 null: false
-    t.string  "feedbacks",  limit: 256
+    t.integer  "workout_id",                               null: false
+    t.string   "feedbacks",                    limit: 256
+    t.string   "workout_picture_file_name"
+    t.string   "workout_picture_content_type"
+    t.integer  "workout_picture_file_size"
+    t.datetime "workout_picture_updated_at"
   end
 
   create_table "goals", force: true do |t|
@@ -123,12 +126,12 @@ ActiveRecord::Schema.define(version: 20150314062651) do
     t.integer  "trainer_id",                                    null: false
     t.string   "timer",                 limit: 256
     t.integer  "status",                            default: 0, null: false
-    t.datetime "start",                                         null: true
-    t.datetime "end",                                           null: true
+    t.datetime "start"
+    t.datetime "end"
     t.string   "focus",                 limit: 256
-    t.integer  "feedback_id",                                   null: true
+    t.integer  "feedback_id"
     t.integer  "goal_id"
-    t.date     "workout_date",                                  null: true
+    t.date     "workout_date"
     t.string   "workout_schedule_time", limit: 10
     t.integer  "job_id"
   end

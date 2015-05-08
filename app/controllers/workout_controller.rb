@@ -26,7 +26,7 @@ class WorkoutController < ApplicationController
   end
 
   private
-  
+
   def get_workout
     @workout = Workout.find(params[:id])
   rescue ActiveRecord::RecordNotFound

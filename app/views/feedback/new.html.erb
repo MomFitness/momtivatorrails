@@ -1,0 +1,6 @@
+<%= form_for :feedback, url: mom_workout_feedback_index_path, :html => { :multipart => true } do |form| %>
+    <%= label_tag "Workout Name: #{@workout.name}" %>
+    <%= form.file_field :workout_picture %>
+    <%= form.submit %>
+<% end %>
+

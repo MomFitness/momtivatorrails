@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     
     resources :workout, only: [:show, :edit, :update] do
       get 'preview'
+
+      resources :feedback, only: [:new, :create]
     end
+
+
     
   end
   

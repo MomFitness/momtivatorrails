@@ -1,0 +1,4 @@
+<%= form_for @feedback, :url => mom_workout_path, :html => { :multipart => true } do |form| %>
+    <%= form.file_field :workout_picture %>
+<% end %>
+

@@ -1,8 +1,10 @@
 <h1><%= @workout.name %></h1>
 <input type="button" id="preview_toggle" value="Show/Hide Preview" />
 <div id="preview" style='display: none;'>
-  <%#= link_to "Show Preview", mom_workout_preview_path(@workout), :remote => true %>
   <%= render(:partial => "preview", :locals => {:preview => @workout.preview}) %>
+</div>
+<div id="feedback">
+  <%= link_to "Record Feedback", new_mom_workout_feedback_path(:workout_id => @workout.id) %>
 </div>
 
 <div id="workout">

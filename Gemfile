@@ -56,3 +56,5 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# For uploading feedback (audio, video and pictures)
+gem "paperclip", "~> 4.2"
